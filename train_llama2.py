@@ -232,7 +232,7 @@ if __name__ == '__main__':
     parser.add_argument('--max_seq_length', type=int, default=512)
     parser.add_argument('--batch_size', type=int, default=8)
     parser.add_argument('--num_epochs', type=float, default=3)
-    parser.add_argument('--lr', type=float, default=2e-5)
+    parser.add_argument('--lr', type=float, default=5e-5)
     parser.add_argument('--logging_steps', type=int, default=10)
     parser.add_argument('--save_model', action='store_true')
     parser.add_argument('--wandb', action='store_true')
