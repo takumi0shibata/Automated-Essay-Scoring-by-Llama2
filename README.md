@@ -39,7 +39,7 @@ python train_llama2.py \
     --model_name meta-llama/Llama-2-7b-hf \
     --output_dir outputs/llama2-7b \
     --attribute_name score \
-    --num_epochs 3 \
+    --num_epochs 10 \
     --lr 5e-5 \
     --wandb
 ```
@@ -61,7 +61,7 @@ This script also supports evaluation using cross-validation. To perform 5-fold c
 - `--seed`: The random seed for reproducibility (default: 12)
 - `--max_seq_length`: The maximum sequence length for tokenization (default: 512)
 - `--batch_size`: The batch size for training and evaluation (default: 8)
-- `--num_epochs`: The number of training epochs (default: 3)
+- `--num_epochs`: The number of training epochs (default: 10)
 - `--lr`: The learning rate (default: 5e-5)
 - `--logging_steps`: The number of steps between logging (default: 10)
 - `--save_model`: Flag to save the fine-tuned model (default: False)
