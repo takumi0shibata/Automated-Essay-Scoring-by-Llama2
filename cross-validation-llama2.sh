@@ -11,9 +11,9 @@ MODEL_NAME="meta-llama/Llama-2-7b-hf"
 # Define the attribute name to predict
 ATTRIBUTE_NAME="score"
 # Define the number of epochs for training
-NUM_EPOCHS=3
+NUM_EPOCHS=10
 # Define the learning rate
-LR=2e-5
+LR=5e-5
 
 # Loop through the test prompt IDs and folds
 for TEST_PROMPT_ID in {1..8}
