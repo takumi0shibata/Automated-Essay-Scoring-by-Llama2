@@ -181,6 +181,7 @@ def main(args):
         seed=seed,
         report_to=report_to,
         load_best_model_at_end=True,
+        metric_for_best_model="QWK",
         label_names=["labels"],
         warmup_ratio=0.1,
         weight_decay=0.01,
