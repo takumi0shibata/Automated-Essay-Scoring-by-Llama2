@@ -152,7 +152,7 @@ def main(args):
 
     # Tokenize data
     def tokenize_func(example):
-        return tokenizer(example['essay'], truncation=True, max_length=max_length, padding=True)
+        return tokenizer(example['essay'], truncation=True, max_length=max_length, padding='max_length')
     
     train_dataset = train_dataset.map(tokenize_func, batched=True)
     dev_dataset = dev_dataset.map(tokenize_func, batched=True)
