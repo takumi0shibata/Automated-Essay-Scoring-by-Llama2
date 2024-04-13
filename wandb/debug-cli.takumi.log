@@ -1,0 +1,154 @@
+2024-04-13 18:06:33 ERROR 400 response executing GraphQL.
+2024-04-13 18:06:33 ERROR {"errors":[{"message":"name required for project query","path":["project"]}],"data":{"project":null}}
+2024-04-13 18:06:33 ERROR Traceback (most recent call last):
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/apis/normalize.py", line 41, in wrapper
+    return func(*args, **kwargs)
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 1055, in sweep
+    response = self.gql(
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 341, in gql
+    ret = self._retry_gql(
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/sdk/lib/retry.py", line 131, in __call__
+    result = self._call_fn(*args, **kwargs)
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 369, in execute
+    return self.client.execute(*args, **kwargs)  # type: ignore
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/vendor/gql-0.2.0/wandb_gql/client.py", line 52, in execute
+    result = self._get_result(document, *args, **kwargs)
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/vendor/gql-0.2.0/wandb_gql/client.py", line 60, in _get_result
+    return self.transport.execute(document, *args, **kwargs)
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/sdk/lib/gql_request.py", line 59, in execute
+    request.raise_for_status()
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.wandb.ai/graphql
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/cli/cli.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/cli/cli.py", line 1757, in agent
+    wandb_agent.agent(sweep_id, entity=entity, project=project, count=count)
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/wandb_agent.py", line 570, in agent
+    return run_agent(
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/wandb_agent.py", line 528, in run_agent
+    agent.run()
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/wandb_agent.py", line 190, in run
+    sweep_obj = self._api.sweep(self._sweep_id, "{}")
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/apis/internal.py", line 126, in sweep
+    return self.api.sweep(*args, **kwargs)
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/apis/normalize.py", line 51, in wrapper
+    raise CommError(message, error)
+wandb.errors.CommError: name required for project query (Error 400: Bad Request)
+
+2024-04-13 18:10:07 ERROR 400 response executing GraphQL.
+2024-04-13 18:10:07 ERROR {"errors":[{"message":"name required for project query","path":["project"]}],"data":{"project":null}}
+2024-04-13 18:10:07 ERROR Traceback (most recent call last):
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/apis/normalize.py", line 41, in wrapper
+    return func(*args, **kwargs)
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 1055, in sweep
+    response = self.gql(
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 341, in gql
+    ret = self._retry_gql(
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/sdk/lib/retry.py", line 131, in __call__
+    result = self._call_fn(*args, **kwargs)
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 369, in execute
+    return self.client.execute(*args, **kwargs)  # type: ignore
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/vendor/gql-0.2.0/wandb_gql/client.py", line 52, in execute
+    result = self._get_result(document, *args, **kwargs)
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/vendor/gql-0.2.0/wandb_gql/client.py", line 60, in _get_result
+    return self.transport.execute(document, *args, **kwargs)
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/sdk/lib/gql_request.py", line 59, in execute
+    request.raise_for_status()
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.wandb.ai/graphql
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/cli/cli.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/cli/cli.py", line 1757, in agent
+    wandb_agent.agent(sweep_id, entity=entity, project=project, count=count)
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/wandb_agent.py", line 570, in agent
+    return run_agent(
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/wandb_agent.py", line 528, in run_agent
+    agent.run()
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/wandb_agent.py", line 190, in run
+    sweep_obj = self._api.sweep(self._sweep_id, "{}")
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/apis/internal.py", line 126, in sweep
+    return self.api.sweep(*args, **kwargs)
+  File "/home/takumi/anaconda3/envs/llama/lib/python3.10/site-packages/wandb/apis/normalize.py", line 51, in wrapper
+    raise CommError(message, error)
+wandb.errors.CommError: name required for project query (Error 400: Bad Request)
+
+2024-04-13 18:14:21 INFO Running runs: []
+2024-04-13 18:14:21 INFO Agent received command: run
+2024-04-13 18:14:21 INFO Agent starting run with config:
+	batch_size: 8
+	learning_rate: 0.00010125993347304544
+	lora_alpha: 64
+	lora_dropout: 0.1
+	lora_r: 8
+	num_epochs: 3
+2024-04-13 18:14:21 INFO About to run command: /usr/bin/env python param_sweep.py --batch_size=8 --learning_rate=0.00010125993347304544 --lora_alpha=64 --lora_dropout=0.1 --lora_r=8 --num_epochs=3
+2024-04-13 18:14:26 INFO Running runs: ['jspu0ou5']
+2024-04-13 18:14:26 INFO Cleaning up finished run: jspu0ou5
+2024-04-13 18:14:27 INFO Agent received command: run
+2024-04-13 18:14:27 INFO Agent starting run with config:
+	batch_size: 8
+	learning_rate: 0.0006119664687669454
+	lora_alpha: 16
+	lora_dropout: 0.1
+	lora_r: 32
+	num_epochs: 10
+2024-04-13 18:14:27 INFO About to run command: /usr/bin/env python param_sweep.py --batch_size=8 --learning_rate=0.0006119664687669454 --lora_alpha=16 --lora_dropout=0.1 --lora_r=32 --num_epochs=10
+2024-04-13 18:14:32 INFO Running runs: ['rzty656p']
+2024-04-13 18:14:32 INFO Cleaning up finished run: rzty656p
+2024-04-13 18:14:32 INFO Agent received command: run
+2024-04-13 18:14:32 INFO Agent starting run with config:
+	batch_size: 8
+	learning_rate: 0.0008646736793900551
+	lora_alpha: 16
+	lora_dropout: 0.1
+	lora_r: 8
+	num_epochs: 3
+2024-04-13 18:14:32 INFO About to run command: /usr/bin/env python param_sweep.py --batch_size=8 --learning_rate=0.0008646736793900551 --lora_alpha=16 --lora_dropout=0.1 --lora_r=8 --num_epochs=3
+2024-04-13 18:14:37 INFO Running runs: ['lwe8wpwj']
+2024-04-13 18:14:37 ERROR Detected 3 failed runs in the first 60 seconds, shutting down.
+2024-04-13 18:14:37 INFO To disable this check set WANDB_AGENT_DISABLE_FLAPPING=true
+2024-04-13 18:21:04 INFO Running runs: []
+2024-04-13 18:21:04 INFO Agent received command: run
+2024-04-13 18:21:04 INFO Agent starting run with config:
+	batch_size: 8
+	learning_rate: 0.00029750593440747397
+	lora_alpha: 16
+	lora_dropout: 0.05
+	lora_r: 16
+	num_epochs: 20
+2024-04-13 18:21:04 INFO About to run command: /usr/bin/env python param_sweep.py --batch_size=8 --learning_rate=0.00029750593440747397 --lora_alpha=16 --lora_dropout=0.05 --lora_r=16 --num_epochs=20
+2024-04-13 18:21:09 INFO Running runs: ['vjmtep6p']
+2024-04-13 18:21:09 INFO Cleaning up finished run: vjmtep6p
+2024-04-13 18:21:09 INFO Agent received command: run
+2024-04-13 18:21:09 INFO Agent starting run with config:
+	batch_size: 16
+	learning_rate: 0.0001923692225607845
+	lora_alpha: 64
+	lora_dropout: 0.05
+	lora_r: 32
+	num_epochs: 3
+2024-04-13 18:21:09 INFO About to run command: /usr/bin/env python param_sweep.py --batch_size=16 --learning_rate=0.0001923692225607845 --lora_alpha=64 --lora_dropout=0.05 --lora_r=32 --num_epochs=3
+2024-04-13 18:21:14 INFO Running runs: ['dlb3ing3']
+2024-04-13 18:21:14 INFO Cleaning up finished run: dlb3ing3
+2024-04-13 18:21:15 INFO Agent received command: run
+2024-04-13 18:21:15 INFO Agent starting run with config:
+	batch_size: 8
+	learning_rate: 0.0008329797729525727
+	lora_alpha: 64
+	lora_dropout: 0.05
+	lora_r: 32
+	num_epochs: 20
+2024-04-13 18:21:15 INFO About to run command: /usr/bin/env python param_sweep.py --batch_size=8 --learning_rate=0.0008329797729525727 --lora_alpha=64 --lora_dropout=0.05 --lora_r=32 --num_epochs=20
+2024-04-13 18:21:20 INFO Running runs: ['wq7oo0ee']
+2024-04-13 18:21:20 ERROR Detected 3 failed runs in the first 60 seconds, shutting down.
+2024-04-13 18:21:20 INFO To disable this check set WANDB_AGENT_DISABLE_FLAPPING=true
