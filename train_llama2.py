@@ -132,6 +132,7 @@ def main(args):
             # "down_proj",
         ],
         lora_dropout=0.05,
+        task_type = "SEQ_CLS",
     )
 
     # Load model
