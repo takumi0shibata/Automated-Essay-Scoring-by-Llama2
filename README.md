@@ -72,6 +72,30 @@ This script also supports evaluation using cross-validation. To perform 5-fold c
 - `--lora_alpha`: the parameter of lora_alpha (default: 16)
 - `--lora_dropout`: the parameter of lora_dropout (default: 0.1)
 
+## Hyperparameter Tuning
+To optimize the performance of the model, we conducted hyperparameter tuning. The hyperparameters explored include:
+
+- Learning rate
+- Batch size
+- Number of epochs
+- LoRA-related parameters (lora_r, lora_alpha, lora_dropout)
+
+We analyzed the importance of each hyperparameter and investigated their impact on the loss function.
+![importance of parameters](figures/importance.png "importance")
+
+![parameters and loss](figures/parameters.png "parameters")
+
+Based on these analyses, we selected the optimal combination of hyperparameters to improve the model's performance. The chosen hyperparameters are as follows:
+
+- Learning rate: 5e-4
+- Batch size: 8
+- Number of epochs: 20
+- lora_r: 32
+- lora_alpha: 16
+- lora_dropout: 0.1
+
+Through hyperparameter tuning, the model's performance significantly improved, achieving higher accuracy in the automated essay scoring task.
+
 ## Acknowledgements
 
 This script is built upon the Hugging Face Transformers library and utilizes the PEFT technique for efficient fine-tuning. It also incorporates various evaluation metrics commonly used in automated essay scoring tasks.
