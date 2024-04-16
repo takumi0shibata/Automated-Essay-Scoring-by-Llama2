@@ -12,6 +12,7 @@ from transformers import (
     Trainer,
     TrainingArguments,
     LlamaForSequenceClassification,
+    AutoModelForSequenceClassification,
     EvalPrediction,
 )
 from peft import (
@@ -140,7 +141,7 @@ def main(args):
     )
 
     # Load model
-    model = LlamaForSequenceClassification.from_pretrained(
+    model = AutoModelForSequenceClassification.from_pretrained(
         args.model_name,
         num_labels=1,
         # load_in_4bit=True,
@@ -226,7 +227,15 @@ if __name__ == '__main__':
         ]
     )
     parser.add_argument('--fold', type=int, default=0, choices=[0, 1, 2, 3, 4])
-    parser.add_argument('--model_name', type=str, default='meta-llama/Llama-2-7b-hf')
+    parser.add_argument(
+        '--model_name',
+        type=str,
+        default='meta-llama/Llama-2-7b-hf',
+        choices=[
+            'meta-llama/Llama-2-7b-hf',
+            'mistralai/Mistral-7B-v0.1',
+        ]
+    )
     parser.add_argument('--output_dir', type=str, default='outputs/llama2-7b')
     parser.add_argument('--attribute_name', type=str, default='score')
     parser.add_argument('--seed', type=int, default=12)
