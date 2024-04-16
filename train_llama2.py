@@ -1,4 +1,4 @@
-# Description: This script is used to fine-tune the Llama-2-7b model on the cross-prompt attributes dataset.
+# Description: This script is used to fine-tune the Llama-2-7b model on the ASAP dataset.
 
 # Importing required libraries
 import argparse
@@ -14,7 +14,11 @@ from transformers import (
     LlamaForSequenceClassification,
     EvalPrediction,
 )
-from peft import prepare_model_for_kbit_training, LoraConfig, get_peft_model
+from peft import (
+    prepare_model_for_kbit_training,
+    LoraConfig,
+    get_peft_model,
+)
 import wandb
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 
@@ -120,8 +124,8 @@ def main(args):
 
     # Lora config
     lora_config = LoraConfig(
-        r=16,
-        lora_alpha=32,
+        r=args.lora_r,
+        lora_alpha=args.lora_alpha,
         target_modules=[
             "q_proj",
             "k_proj",
@@ -131,7 +135,7 @@ def main(args):
             # "up_proj",
             # "down_proj",
         ],
-        lora_dropout=0.05,
+        lora_dropout=args.lora_dropout,
         task_type = "SEQ_CLS",
     )
 
@@ -182,7 +186,7 @@ def main(args):
         seed=seed,
         report_to=report_to,
         load_best_model_at_end=True,
-        metric_for_best_model="QWK",
+        metric_for_best_model="eval_dev_QWK",
         label_names=["labels"],
         warmup_ratio=0.1,
         weight_decay=0.01,
@@ -193,7 +197,10 @@ def main(args):
         model=model,
         args=train_args,
         train_dataset=train_dataset,
-        eval_dataset=dev_dataset,
+        eval_dataset={
+            'dev': dev_dataset,
+            'test': test_dataset,
+        },
         compute_metrics=prepare_compute_metrics(test_prompt_id, attribute_name),
     )
 
@@ -204,16 +211,6 @@ def main(args):
     if args.save_model:
         model.save_pretrained(args.output_dir)
         tokenizer.save_pretrained(args.output_dir)
-
-    ############################################################
-    # Inference
-    ############################################################
-    predictions = trainer.predict(test_dataset)
-    print(predictions.metrics)
-
-    if args.wandb:
-        wandb.log(predictions.metrics)
-        wandb.finish()
 
 
 if __name__ == '__main__':
@@ -235,13 +232,16 @@ if __name__ == '__main__':
     parser.add_argument('--seed', type=int, default=12)
     parser.add_argument('--max_seq_length', type=int, default=512)
     parser.add_argument('--batch_size', type=int, default=8)
-    parser.add_argument('--num_epochs', type=float, default=10)
-    parser.add_argument('--lr', type=float, default=5e-5)
+    parser.add_argument('--num_epochs', type=float, default=20)
+    parser.add_argument('--lr', type=float, default=5e-4)
     parser.add_argument('--logging_steps', type=int, default=10)
     parser.add_argument('--save_model', action='store_true')
     parser.add_argument('--wandb', action='store_true')
     parser.add_argument('--pjname', type=str, default='ASAP-AES-llama2-7b')
     parser.add_argument('--run_name', type=str, default='llama2-7b')
+    parser.add_argument('--lora_r', type=int, default=32)
+    parser.add_argument('--lora_alpha', type=int, default=16)
+    parser.add_argument('--lora_dropout', type=float, default=0.1)
     args = parser.parse_args()
     print(dict(args._get_kwargs()))
 

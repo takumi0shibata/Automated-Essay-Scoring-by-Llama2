@@ -158,19 +158,19 @@ def train():
         weight_decay=0.01,
     )
 
+    # Define trainer
     trainer = Trainer(
         model=model,
         args=train_args,
         train_dataset=train_dataset,
-        eval_dataset=dev_dataset,
+        eval_dataset={
+            'dev': dev_dataset,
+            'test': test_dataset,
+        },
         compute_metrics=prepare_compute_metrics(test_prompt_id, attribute_name),
     )
 
     trainer.train()
-
-    eval_metrics = trainer.evaluate()
-    wandb.log(eval_metrics)
-    wandb.finish()
 
 if __name__ == '__main__':
     train()
