@@ -2,6 +2,11 @@
 
 This repository contains a script for fine-tuning the Llama-2-7B model on the ASAP dataset for automated essay scoring (AES). The script utilizes the Hugging Face Transformers library and the PEFT (Parameter-Efficient Fine-Tuning) technique to efficiently fine-tune the large language model.
 
+## Recent Updates (2024/04/18)
+- Added support for fine-tuning the DeBERTa-v3-large model
+- Added support for fine-tuning the Mistral-7B model
+- Updated the hyperparameters for Llama-2 fine-tuning based on hyperparameter tuning results
+
 ## Features
 
 - Fine-tunes the Llama-2-7B model for sequence classification tasks
